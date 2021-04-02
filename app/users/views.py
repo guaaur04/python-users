@@ -19,5 +19,5 @@ def detail(request):
     return HttpResponse("<h1>This is the detail view!</h1>")
 
 def add(request):
-    return HttpResponse("<h1>This is the add")
+    return HttpResponse("<h1>This is the add view!")
 
