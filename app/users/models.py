@@ -10,12 +10,11 @@ class User(models.Model):
 
     email = models.CharField(max_length=256,blank=True, null=True)
 
-  age = models.IntegerField(max_length=256,blank=True, null=True)
+    age = models.IntegerField(max_length=256,blank=True, null=True)
 
-  def __str__ (self):
+    def __str__ (self):
       """ Sensible string representation of a user."""
-      return "{0} {1} | {2}".format(self.first_name, self.last_name, 
-                self.email)
+      return "{0} {1} | {2}".format(self.first_name, self.last_name, self.email)
 
 
 
