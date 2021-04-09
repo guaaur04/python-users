@@ -1,26 +1,29 @@
+from django.http import Http404, HttpResponse
+
 from django.shortcuts import render
 
-from django.http import HttpResponse
+from django.views.generic import DetailView, ListView
 
-from .models import User 
+from .models import User
 
-# Create your views here.
+class UserListView(ListView):
+    model = User
+    template_name = 'users/index.html'
 
-def index(request):
-    
-    context = { 'name' : 'D\'Rura Gavicx' , 'tasks' : ['Change the oil', 'Eat'] }
+    def get_context_data(self, **kwargs):
+        context = super(UserListView, self).get_context_data(**kwargs)
 
-    return render(request, 'users/index.html', context)
+        # In real life we'd retrieve this from the session.
+        context['name'] = 'Jake'
+        
+        return context
 
-def detail(request):
-
-    context = { 'header' : 'This is the detail view!'}
-
-    return render(request, 'users/detail.html', context)
+class UserDetailView(DetailView):
+    model = User
+    template_name = 'users/detail.html'
 
 def add(request):
-    
+
     context = { 'header' : 'This is the add view!'}
 
     return render(request, 'users/add.html', context)
-
